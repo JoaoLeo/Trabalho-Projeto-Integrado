@@ -4,9 +4,9 @@ import {Navbar, Container, Nav} from 'react-bootstrap'
 const Cabecalho = () => {
   return (
   <> 
-    <Navbar bg="success" variant="success">
+    <Navbar bg="success" className='mb-4' variant="success">
     <Container>
-      <Navbar.Brand>API Deputados</Navbar.Brand>
+      <Navbar.Brand href="/">API Deputados</Navbar.Brand>
       <Nav className="me-auto">
       <Nav.Link href="/">Deputados</Nav.Link>
         <Nav.Link href="/gastosEstados">Gastos por estados</Nav.Link>

@@ -1,12 +1,16 @@
-import Page from '@/components/Page';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import { Container } from 'react-bootstrap';
 
 export default function Home() {
   return (
     <>
-    <Page>
+    <Header/>
+    <Container>
     teste
-    </Page>
+    </Container>
+    <Footer/>
     </>
   )
 }
