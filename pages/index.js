@@ -22,7 +22,7 @@ export default function Home() {
 }
 
 export async function getServerSideProps(context) {
-  const resultado = await apiDeputados.get("")
+  const resultado = await apiDeputados.get("/deputados")
   return {
       props: {
           

@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import styles from '@/styles/style.module.css';
 import { Row } from 'react-bootstrap';
 import html from 'react-inner-html';
+import apiDeputados from '@/services/apiDeputados';
 
 /*
 PEDRO
@@ -218,7 +219,7 @@ const gastosEstados = () => {
 export default gastosEstados
 
 export async function getServerSideProps(context) {
-  const resultado = await apiDeputados.get("")
+  const resultado = await apiDeputados.get("/deputados")
   return {
       props: {
           
