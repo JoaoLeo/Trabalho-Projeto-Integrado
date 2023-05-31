@@ -7,14 +7,11 @@ import styles from '@/styles/style.module.css';
 import { Row } from 'react-bootstrap';
 import html from 'react-inner-html';
 
-/* Página com select para selecionar o estado e mostrar os deputados que mais gastam. 
-Dados necessários: Gastos dos deputados, estados dos deputados
-*/
-
 /*
-Até agora adicionei o mapa, entretanto ele está com um problema no código dentro do useEffect,
-ainda estou tentando resolver.
-Adicionei uma pasta para os styles, e coloquei um arquivo, foi necessário para usar modulo. Da para alterar e colocar mais.
+PEDRO
+Página com select para selecionar o estado e mostrar os deputados que mais gastam. 
+Dados necessários: Gastos dos deputados, estados dos deputados
+
 */
 
 const gastosEstados = () => {
@@ -219,4 +216,13 @@ const gastosEstados = () => {
 }
 
 export default gastosEstados
+
+export async function getServerSideProps(context) {
+  const resultado = await apiDeputados.get("")
+  return {
+      props: {
+          
+      }, 
+  }
+}
 
