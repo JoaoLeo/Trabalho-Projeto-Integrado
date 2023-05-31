@@ -7,7 +7,7 @@ import styles from '@/styles/style.module.css';
 import { Row } from 'react-bootstrap';
 import html from 'react-inner-html';
 import apiDeputados from '@/services/apiDeputados';
-
+import GlobalStyle from "@/styles/global";
 /*
 PEDRO
 Página com select para selecionar o estado e mostrar os deputados que mais gastam. 
@@ -49,6 +49,7 @@ const gastosEstados = () => {
   }, [])
   return (
     <>
+    <GlobalStyle/>
       <Header />
       <Container>
         <Row>

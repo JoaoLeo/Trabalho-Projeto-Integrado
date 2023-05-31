@@ -3,15 +3,16 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { Carousel, Col, Container, Row } from 'react-bootstrap';
 import apiDeputados from '@/services/apiDeputados';
+import GlobalStyle from "@/styles/global";
 /*
 Miguel
 
 
 */
-
 export default function Home({deputados}) {
   return (
     <>
+    <GlobalStyle/>
       <Header />
       <Row md={12}>
       <Col>

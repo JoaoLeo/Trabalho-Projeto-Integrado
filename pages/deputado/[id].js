@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { Container } from 'react-bootstrap';
 import apiDeputados from '@/services/apiDeputados';
+import GlobalStyle from "@/styles/global";
 /*
 
 JONATHAN 
@@ -12,6 +13,7 @@ Página com informações sobre deputados. Dados necessários: Máximo de inform
 const id = () => {
     return (
         <>
+        <GlobalStyle/>
         <Header/>
         <Container>
         teste

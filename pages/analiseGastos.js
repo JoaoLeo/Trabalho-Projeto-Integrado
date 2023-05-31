@@ -8,6 +8,7 @@ import apiDeputados from '@/services/apiDeputados';
 import Link from 'next/link';
 import { BsSendCheck } from 'react-icons/bs'
 import apiLocalidades from '@/services/apiLocalidades';
+import GlobalStyle from "@/styles/global";
 /*
 JOÃO
 
@@ -34,6 +35,7 @@ const analiseGastos = () => {
 
   return (
     <>
+     <GlobalStyle />
     <Header/>
     <Container> 
     <Form>
