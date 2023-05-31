@@ -6,9 +6,10 @@ import  Header  from '@/components/Header'
 import Footer from '@/components/Footer'
 import apiDeputados from '@/services/apiDeputados';
 import Link from 'next/link';
-import { BsSendCheck } from 'react-icons/bs'
+import { BsSendCheck, BsCalendarFill } from 'react-icons/bs'
 import apiLocalidades from '@/services/apiLocalidades';
 import GlobalStyle from "@/styles/global";
+import { GiBrazil } from "react-icons/gi"
 /*
 JOÃO
 
@@ -41,17 +42,17 @@ const analiseGastos = () => {
     <Form>
       <Row className="mb-3"> 
         <Form.Group as={Col} md="4" controlId="nome">
-          <Form.Label>Ano 1</Form.Label>
+          <Form.Label> <BsCalendarFill className='me-1'/> Ano 1</Form.Label>
           <Form.Control type="text" placeholder="Digite o ano 1" {...register('ano1')} />
         </Form.Group>
 
         <Form.Group as={Col} md="4" controlId="ano2">
-          <Form.Label>Ano 2</Form.Label>
+          <Form.Label> <BsCalendarFill className='me-1'/>  Ano 2</Form.Label>
           <Form.Control type="text" placeholder="Digite o ano 2" {...register('ano2')}  />
         </Form.Group>
 
         <Form.Group as={Col} md="4" controlId="estado">
-          <Form.Label>Estado</Form.Label>
+          <Form.Label> <GiBrazil/> Estado</Form.Label>
           <Form.Select {...register('estado')}>
                 <option value="0"> Selecione um estado </option>
                   {ufs.map(uf => (
@@ -64,7 +65,7 @@ const analiseGastos = () => {
         <div className='text-center mt-4 pr-1'>
         <Button variant="success" className='me-2' onClick={handleSubmit(salvar)}>
           <BsSendCheck className='me-2'/>
-          Salvar
+          Analisar
         </Button>
         </div>
         </Row>
