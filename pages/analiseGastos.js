@@ -33,6 +33,7 @@ const analiseGastos = () => {
     { value: '2022', label: '2022' },
     { value: '2023', label: '2023' },
   ]
+
   useEffect(() =>{
     apiLocalidades.get('localidades/estados?orderBy=nome').then(res =>{
       setUfs(res.data)
@@ -66,8 +67,6 @@ const analiseGastos = () => {
     },1000)
     }) 
     }
-    
-  
 
   async function analiseDeGastosEstado(dados){
     setLoader(true)
@@ -77,8 +76,7 @@ const analiseGastos = () => {
       deputados.forEach(element => {
         if(element.siglaUf == dados.estado){
           lista.push(element)
-        }        
-    
+        }         
       });    
         await calculaAno1(lista, dados.ano1);
         await calculaAno2(lista, dados.ano2);
@@ -105,7 +103,7 @@ const analiseGastos = () => {
         </Form.Group>
 
         <Form.Group as={Col} md="4" controlId="nome">
-          <Form.Label> <BsCalendarFill className='me-1'/> Ano 2</Form.Label>
+          <Form.Label> <BsCalendarFill className='me-1'/> Ano 1</Form.Label>
           <Form.Select {...register('ano2', { required : true})} defaultValue="default">
           <option value="default"> Selecione o ano 2 </option>
                   {options.map(o => (
@@ -133,7 +131,6 @@ const analiseGastos = () => {
         </div>
         </Row>
       </Form>
-
 
       <h1>
         Dados:
