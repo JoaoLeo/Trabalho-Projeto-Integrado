@@ -5,53 +5,70 @@ import { Button, Card, Col, Container, Row, } from 'react-bootstrap';
 import apiDeputados from '@/services/apiDeputados';
 import styles from '@/styles/carrosel.module.css';
 import { motion } from 'framer-motion';
-import {useState, useEffect, useRef} from 'react'
-import { set } from 'react-hook-form';
+import { useState, useEffect, useRef } from 'react'
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+
 
 export default function Home({ deputados }) {
 
-  const carousel = useRef();
+  const carousel = useRef(null);
   const [width, setWidth] = useState(0)
 
   useEffect(() => {
-     console.log(carousel.current?.scrollWidth, carousel.current?.offsetWidth)
-     setWidth(carousel.current?.scrollWidth - carousel.current?.offsetWidth)
+    setWidth(carousel.current?.scrollWidth - carousel.current?.offsetWidth)
   }, [])
-  
+
+
+  const handleLeftClick = (e) => {
+    e.preventDefault();
+    carousel.current.scrollLeft -= carousel.current.offsetWidth
+  }
+
+  const handleRightClick = (e) => {
+    e.preventDefault();
+    carousel.current.scrollLeft += carousel.current.offsetWidth
+  }
+
+
+
   return (
     <>
       <Header />
       <Container>
         <Row className={styles.carrosel}>
-          <Col></Col>
           <Col>
-            <motion.div ref={carousel} className={styles.carousel} whileTap={{cursor: "grabbing"}}>
-              <motion.div 
-              className={styles.inner}
-              drag="x"
-              dragConstraints = {{ right:0, left: -width }}
-              initial={{ x: 100 }}
-              animate={{ x: 0 }}
+            <motion.div ref={carousel} className={styles.carousel} whileTap={{ cursor: "grabbing" }}>
+              <motion.div
+                className={styles.inner}
+                drag="x"
+                dragConstraints={{ right: 0, left: -width }}
               >
-            {deputados.map(item => (
-              <motion.div className={styles.item} key={item}>
-              <Card className={styles.card}>
-                <Card.Img className={styles.img} variant="top" src={item.urlFoto} />
-                <Card.Body>
-                  <Card.Title>{item.nome}</Card.Title>
-                  <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
-                  </Card.Text>
-                  <Button variant="primary">Ver mais</Button>
-                </Card.Body>
-              </Card>
+                {deputados.map(item => (
+                  <motion.div className={styles.item} key={item}>
+                    <Card className={styles.card}>
+                      <Card.Img className={styles.img} variant="top" src={item.urlFoto} />
+                      <Card.Body>
+                        <Card.Title>{item.nome}</Card.Title>
+                        <Card.Text>
+                          <p><strong>Partido:</strong>{item.siglaPartido}</p>
+                          <p><strong>UF Deputado:</strong>{item.siglaUf}</p>
+                        </Card.Text>
+                        <Button variant="primary">Ver mais</Button>
+                      </Card.Body>
+                    </Card>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
             </motion.div>
+            <motion.div className={styles.seta}>
+              <motion.div onClick={handleLeftClick}>
+                <AiOutlineLeft />
+              </motion.div>
+              <motion.div onClick={handleRightClick}>
+                <AiOutlineRight />
+              </motion.div>
             </motion.div>
           </Col>
-          <Col></Col>
         </Row>
       </Container>
       <Footer />
