@@ -7,6 +7,7 @@ import styles from '@/styles/carrosel.module.css';
 import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+import Link from 'next/link';
 
 
 export default function Home({ deputados }) {
@@ -53,7 +54,7 @@ export default function Home({ deputados }) {
                           <p><strong>Partido:</strong>{item.siglaPartido}</p>
                           <p><strong>UF Deputado:</strong>{item.siglaUf}</p>
                         </Card.Text>
-                        <Button variant="primary">Ver mais</Button>
+                        <Link href={`/deputado/${item.id}`}> <Button variant="success">Detalhes</Button> </Link>
                       </Card.Body>
                     </Card>
                   </motion.div>
