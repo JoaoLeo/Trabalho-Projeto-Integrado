@@ -35,6 +35,7 @@ const analiseGastos = () => {
   ]
 
   useEffect(() =>{
+    console.log(123)
     apiLocalidades.get('localidades/estados?orderBy=nome').then(res =>{
       setUfs(res.data)
     })
@@ -44,7 +45,7 @@ const analiseGastos = () => {
     let aux1 = 0
     lista.forEach(l =>{
       setTimeout(() =>{ 
-      apiDeputados.get(`/deputados/${l.id}/despesas?ano=${ano}&ordem=ASC&ordenarPor=ano`).then(res =>{
+      apiDeputados.get(`/deputados/${l.id}/despesas?ano=${ano}&ordem=ASC&ordenarPor=ano&itens=100`).then(res =>{
        res.data.dados.forEach(d =>{
           aux1 += d.valorLiquido
        })
@@ -71,8 +72,9 @@ const analiseGastos = () => {
   async function analiseDeGastosEstado(dados){
     setLoader(true)
     const lista = []
-    apiDeputados.get("/deputados").then(async res =>{  
-      const deputados = res.data.dados
+    // to-do: add mes e ano busca
+    apiDeputados.get("/deputados?itens=50&siglaUF="+dados.estado).then(async res =>{  
+      const lista = res.data.dados
       deputados.forEach(element => {
         if(element.siglaUf == dados.estado){
           lista.push(element)
