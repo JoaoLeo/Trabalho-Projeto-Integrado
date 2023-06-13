@@ -103,7 +103,7 @@ const analiseGastos = () => {
         </Form.Group>
 
         <Form.Group as={Col} md="4" controlId="nome">
-          <Form.Label> <BsCalendarFill className='me-1'/> Ano 1</Form.Label>
+          <Form.Label> <BsCalendarFill className='me-1'/> Ano 2</Form.Label>
           <Form.Select {...register('ano2', { required : true})} defaultValue="default">
           <option value="default"> Selecione o ano 2 </option>
                   {options.map(o => (
