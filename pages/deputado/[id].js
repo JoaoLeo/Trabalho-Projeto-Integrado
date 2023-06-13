@@ -18,23 +18,54 @@ const id = () => {
   console.log(query.id);
 
   const [deputado, setDeputado] = useState({})
+  const [despesas, setDespesas] = useState([])
+  const [eventos, setEventos] = useState([])
+  const [frentes, setFrentes] = useState([])
+  const [profissoes, setProfissoes] = useState([])
+  const [orgaos, setOrgaos] = useState([])
+  const [ocupacoes, setOcupacoes] = useState([])
   useEffect(() => {
 
     if (query.id) {
 
       apiDeputados.get('deputados/' + query.id).then(res => {
-        console.log(res.data)
+       setDeputado(res.data.dados)
+       console.log("deputado:", res.data.dados);
       })
+      apiDeputados.get('deputados/' + query.id + '/despesas').then(res => {
+        setDespesas(res.data.dados)
+        console.log("despesas:", res.data.dados);
+       })
+       apiDeputados.get('deputados/' + query.id + '/eventos').then(res => {
+        setEventos(res.data.dados)
+        console.log("eventos:", res.data.dados);
+       })
+       apiDeputados.get('deputados/' + query.id + '/').then(res => {
+        setFrentes(res.data.dados)
+        console.log("frentes:", res.data.dados);
+       })
+       apiDeputados.get('deputados/' + query.id + '/profissoes').then(res => {
+        setProfissoes(res.data.dados)
+        console.log("profissoes:", res.data.dados);
+       })
+       apiDeputados.get('deputados/' + query.id + '/orgaos').then(res => {
+        setOrgaos(res.data.dados)
+        console.log("orgaos:", res.data.dados);
+       })
+       apiDeputados.get('deputados/' + query.id + '/ocupacoes').then(res => {
+        setOcupacoes(res.data.dados)
+        console.log("ocupacoes:", res.data.dados);
+       })
+
     }
   }, [query.id])
-
+     
   return (
     <>
       <GlobalStyle />
       <Header />
       <Container>
-        {deputado.nome}
-        {id}
+        NOME: {deputado.nomeCivil}
       </Container>
       <Footer />
     </>
