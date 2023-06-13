@@ -31,6 +31,7 @@ const analiseGastos = () => {
   const [mes2, setMes2] = useState("")
   const [ano1, setAno1] = useState("")
   const [ano2, setAno2] = useState("")
+  const [uf, setUf] = useState("")
   const { register, handleSubmit,setValue, formState : { errors } } = useForm();
 
   const options = [
@@ -78,6 +79,7 @@ const analiseGastos = () => {
     if(alert)
       setAlert(false)
     setLoader(true)
+    setUf(dados.estado)
     setMes1(dados.mes1)
     setMes2(dados.mes2)
     setAno1(dados.ano1)
@@ -206,6 +208,7 @@ const analiseGastos = () => {
         }
         {
           show && <Dados 
+          uf={uf}
           mes1={mes1} 
           mes2={mes2}
           ano1={ano1} 
@@ -221,14 +224,14 @@ const analiseGastos = () => {
   )
 }
 
-const Dados = ({mes1,mes2,ano1,ano2,totAno1, totAno2, diff}) =>{
+const Dados = ({uf,mes1,mes2,ano1,ano2,totAno1, totAno2, diff}) =>{
   return(
   <>
    <Table striped bordered hover>
       <thead>
         <tr>
-          <th>Gasto total em {mes1}/{ano1}</th>
-          <th>Gasto total em {mes2}/{ano2}</th>
+          <th>Gasto total em {mes1}/{ano1} no estado do {uf.toUpperCase()}</th>
+          <th>Gasto total em {mes2}/{ano2} no estado do {uf.toUpperCase()}</th>
           <th>Diferença</th>
         </tr>
       </thead>
