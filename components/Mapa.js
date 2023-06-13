@@ -22,8 +22,7 @@ function Mapa() {
 
     return (
         <>
-                    <h2>Digite um ano e clique em um estado para saber qual deputado mais gatou, no estado, ou apenas um ano para saber qual deputado mais gastou.</h2>
-
+                    
                     <svg xmlnsmapsvg="http://mapsvg.com" xmlnsdc="http://purl.org/dc/elements/1.1/"
                         xmlnsrdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlnssvg="http://www.w3.org/2000/svg"
                         xmlns="http://www.w3.org/2000/svg" width="612.51611" height="639.04297"

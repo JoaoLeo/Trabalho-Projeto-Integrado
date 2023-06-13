@@ -11,7 +11,7 @@ const Cabecalho = () => {
       <Navbar.Brand href="/"> <BsFillDatabaseFill/> API Deputados</Navbar.Brand>
       <Nav className="me-auto">
       <Nav.Link href="/"> <FaUserTie/> Deputados</Nav.Link>
-        <Nav.Link href="/gastosEstados"> <BsCashCoin/> Gastos por estados</Nav.Link>
+        <Nav.Link href="/gastosEstados"> <BsCashCoin/> Gastos por estado</Nav.Link>
         <Nav.Link href="/analiseGastos"> <BsGraphUp/> Análise de gastos</Nav.Link>
       </Nav>
     </Container>

@@ -21,13 +21,21 @@ const gastosEstados = () => {
       <GlobalStyle />
       <Header />
       <Container>
+        <h1>
+          Gatos por estado
+        </h1>
+        <hr></hr>
         <Row >
           <Col md='8'>
             <Mapa />
           </Col>
           <Col md='4'>
+            <p>
+              Digite um ano e clique em um estado para saber os top 10 deputados que mais gastaram no estado, ou apenas um ano para saber quais deputados mais gastaram.
+            </p>
+
             <Form.Group as={Col} controlId="nome">
-              <Form.Label> <BsCalendarFill /> Digite um ano </Form.Label>
+              <Form.Label> <BsCalendarFill /> <strong>Digite um ano</strong>  </Form.Label>
               <Form.Control type="text" placeholder="Ex.: 2020" />
             </Form.Group>
             <br></br>
