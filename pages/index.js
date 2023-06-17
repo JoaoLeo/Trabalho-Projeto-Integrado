@@ -1,75 +1,31 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import { Button, Card, Col, Container, Row, } from 'react-bootstrap';
+import { Card, Col, Container, Row, } from 'react-bootstrap';
 import apiDeputados from '@/services/apiDeputados';
-import styles from '@/styles/carrosel.module.css';
-import { motion } from 'framer-motion';
-import { useState, useEffect, useRef } from 'react'
-import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import Link from 'next/link';
+import GlobalStyle from "@/styles/global";
+import styles from "@/styles/index.module.css"
 
 
 export default function Home({ deputados }) {
 
-  const carousel = useRef(null);
-  const [width, setWidth] = useState(0)
-
-  useEffect(() => {
-    setWidth(carousel.current?.scrollWidth - carousel.current?.offsetWidth)
-  }, [])
-
-
-  const handleLeftClick = (e) => {
-    e.preventDefault();
-    carousel.current.scrollLeft -= carousel.current.offsetWidth
-  }
-
-  const handleRightClick = (e) => {
-    e.preventDefault();
-    carousel.current.scrollLeft += carousel.current.offsetWidth
-  }
-
-
-
   return (
     <>
+    <GlobalStyle/>
       <Header />
       <Container>
-        <Row className={styles.carrosel}>
-          <Col>
-            <motion.div ref={carousel} className={styles.carousel} whileTap={{ cursor: "grabbing" }}>
-              <motion.div
-                className={styles.inner}
-                drag="x"
-                dragConstraints={{ right: 0, left: -width }}
-              >
+        <Row md={4}> 
                 {deputados.map(item => (
-                  <motion.div className={styles.item} key={item}>
+                  <Col>
                     <Card className={styles.card}>
-                      <Card.Img className={styles.img} variant="top" src={item.urlFoto} />
-                      <Card.Body>
-                        <Card.Title>{item.nome}</Card.Title>
-                        <Card.Text>
-                          <p><strong>Partido:</strong>{item.siglaPartido}</p>
-                          <p><strong>UF Deputado:</strong>{item.siglaUf}</p>
-                        </Card.Text>
-                        <Link href={`/deputado/${item.id}`}> <Button variant="success">Detalhes</Button> </Link>
-                      </Card.Body>
+                    <Link href={'/deputado/' + item.id}>
+                      <Card.Img variant="top" src={item.urlFoto} className={styles.img}/>
+                      <Card.Title className={styles.nome}>{item.nome}</Card.Title>
+                      </Link> 
                     </Card>
-                  </motion.div>
+                    </Col>
                 ))}
-              </motion.div>
-            </motion.div>
-            <motion.div className={styles.seta}>
-              <motion.div onClick={handleLeftClick}>
-                <AiOutlineLeft />
-              </motion.div>
-              <motion.div onClick={handleRightClick}>
-                <AiOutlineRight />
-              </motion.div>
-            </motion.div>
-          </Col>
         </Row>
       </Container>
       <Footer />

@@ -1,0 +1,26 @@
+.img{
+    border-radius: 30px;
+}
+
+.card{
+    border:2px solid rgb(90, 172, 83);
+    border-radius: 30px;
+    margin-top: 20px;
+    position: relative;
+    transition: all 0.3s linear;
+}
+
+.card:hover{
+    box-shadow: 0 0 8px #043803;
+    border: solid 1px #9ed87d;
+    scale: 1.1;
+}
+
+.nome{
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    color: #74c474;
+    font-size: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
