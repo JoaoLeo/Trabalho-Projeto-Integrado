@@ -95,7 +95,7 @@ const analiseGastos = () => {
       setLoader(false)
       return;
     }
-    apiDeputados.get("/deputados?&siglaUf="+dados.estado).then(async res =>{  
+    apiDeputados.get("/deputados?&itens=5&siglaUf="+dados.estado).then(async res =>{  
       const lista = res.data.dados        
         await calculaAno(lista, dados.mes1, dados.ano1,true);
         await calculaAno(lista, dados.mes2,dados.ano2,false);
