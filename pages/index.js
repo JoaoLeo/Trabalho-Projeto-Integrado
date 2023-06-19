@@ -17,7 +17,7 @@ export default function Home({ deputados }) {
       <Container>
       <h3> Deputados:
 </h3> <hr style={{color: '#006400'}}/>
-      <Row md={4}> 
+      <Row md={4} className='mb-4'> 
                 {deputados.map(item => (
                   <Col>
                     <Card className={styles.card} title={`Clique para ver as informações de ${item.nome}`}>
@@ -29,6 +29,7 @@ export default function Home({ deputados }) {
                     </Col>
                 ))}
         </Row>
+        <br/>
       </Container>
       <Footer />
     </>
