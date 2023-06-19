@@ -27,9 +27,13 @@ const id = ({deputado, despesas, profissoes, orgaos, frentes, discursos}) => {
                             <Card className='mt-4'> 
                             <Card.Img variant="top" src={deputado.ultimoStatus.urlFoto} title={deputado.nomeCivil} />
                             <Card.Body> 
-                              <Card.Title>{deputado.ultimoStatus.nome}</Card.Title>
-                              <p> Partido: {deputado.ultimoStatus.siglaPartido}</p>
-                              <p> UF partido: {deputado.ultimoStatus.siglaUf} </p>
+                              <Card.Title as={'h4'}> {deputado.ultimoStatus.nome}</Card.Title>
+                              <hr style={{color: '#006400'}}/>
+                              <p className='text-justify my-0'> <b> Partido:</b>  {deputado.ultimoStatus.siglaPartido}</p>
+                              <hr style={{color: '#006400'}}/>
+                              <p className='text-justify my-0'> <b> UF partido:</b> {deputado.ultimoStatus.siglaUf} </p>
+                              <hr style={{color: '#006400'}}/>
+                              <p className='text-justify my-0'> <b> Email:</b>  {deputado.ultimoStatus.email} </p>
                               </Card.Body>
                             </Card>
                             <hr style={{color: '#006400'}}/>
@@ -126,10 +130,6 @@ const id = ({deputado, despesas, profissoes, orgaos, frentes, discursos}) => {
                               </Dropdown.Toggle>
 
                               <Dropdown.Menu>
-                                {
-                                  discursos && 
-                                <p className='text-center my-0'> Não disponível </p>
-                                }
                                 {discursos.map(d => (
                                   <>
                                   <ModalDiscurso titulo={d.tipoDiscurso} texto={d.transcricao}></ModalDiscurso> 
