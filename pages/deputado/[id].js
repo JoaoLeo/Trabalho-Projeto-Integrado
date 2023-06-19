@@ -126,9 +126,13 @@ const id = ({deputado, despesas, profissoes, orgaos, frentes, discursos}) => {
                               </Dropdown.Toggle>
 
                               <Dropdown.Menu>
+                                {
+                                  discursos && 
+                                <p className='text-center my-0'> Não disponível </p>
+                                }
                                 {discursos.map(d => (
                                   <>
-                                  <ModalDiscurso titulo={d.tipoDiscurso} texto={d.transcricao}>n</ModalDiscurso> 
+                                  <ModalDiscurso titulo={d.tipoDiscurso} texto={d.transcricao}></ModalDiscurso> 
                                   </>
                                 ))}
                                 
