@@ -20,7 +20,6 @@ Dados necessários: Gastos dos deputados, estados dos deputados
 */
 
 const gastosEstados = () => {
-  const [dados, setDadosGeograficos] = useState([])
   const [estadoSelecionado, setEstadoSelecionado] = useState('');
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   const [alert, setAlert] = useState(false);
@@ -34,8 +33,19 @@ const gastosEstados = () => {
   ]
 
   async function gastosEstados(dados) {
+    const dataAtual = new Date();
+    const mesAtual = dataAtual.getMonth(); // Retorna um valor entre 0 e 11, onde 0 representa janeiro e 11 representa dezembro
+    const anoAtual = dataAtual.getFullYear(); // Retorna o ano com quatro dígitos
+
     if (!estadoSelecionado) {
+      setEstadoSelecionado('');
       setAlert(true);
+      return;
+    }
+    if((dados.ano == anoAtual) && (dados.mes > mesAtual + 1)){
+      for(let campo in dados) { setValue(campo, "") }
+      setEstadoSelecionado('')
+      setAlert(true)
       return;
     }
 
@@ -79,9 +89,11 @@ const gastosEstados = () => {
         <Form>
           <Row>
             <Col md='8'>
+            <h5> Selecione um estado, um mês e um ano para obter o ranking dos deputados que tiveram os maiores gastos no período
+</h5> <hr/>
               <MapBrazil stroke-width='3px' bg='#037624' fill='#06c83d' width={500} height={500} onChange={setEstadoSelecionado} />
-
-              <h3> Estado Selecionado {estadoSelecionado}</h3>
+              <hr/>
+              <h4> Estado Selecionado {estadoSelecionado}</h4>
             </Col>
             <Col md='4'>
 
@@ -112,27 +124,27 @@ const gastosEstados = () => {
         <br></br>
         {
           !alert &&
-          top10.map(d => (
+          top10.map((d,i) => (
             <>
-              <Card style={{ width: '100%' }}>
+              <Card style={{ width: '100%' }} className='mb-4'>
                 <Row>
                   <Col md={3}>
                     <Card.Img as={Image} style={{ width: '70%' }} src={d.urlFoto} />
                   </Col>
-                  <Col md={9}>
-                    <h3> {d.nome} </h3>
+                  <Col md={9} className='mb-2'>
+                    <h3> {i + 1}° {d.nome} </h3>
                     <Card.Text>
                       <h5> <b>Partido: </b> {d.siglaPartido} </h5>
                     </Card.Text>
                   </Col>
-                  <br />
+                  <br/>
                   <p></p>
                   <Link href={`/deputado/${d.id}`}>
                     <Button variant="success" style={{ width: '16.5%' }}> Detalhes </Button>
                   </Link>
                 </Row>
               </Card>
-              <br />
+              <br/>
             </>
           ))
         }
@@ -141,7 +153,7 @@ const gastosEstados = () => {
           <Alert variant="danger">
             <Alert.Heading>Aviso!</Alert.Heading>
             <p>
-              Selecione o estado!
+              Selecione dados válidos! (O mês e ano não podem exceder a data atual e o estado deve estar selecionado)
             </p>
           </Alert>
         }
