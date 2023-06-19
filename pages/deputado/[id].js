@@ -32,7 +32,7 @@ const id = ({deputado, despesas, profissoes, orgaos, frentes, discursos}) => {
                               <p> UF partido: {deputado.ultimoStatus.siglaUf} </p>
                               </Card.Body>
                             </Card>
-                            <hr/>
+                            <hr style={{color: '#006400'}}/>
                             <Link href={"/"} className='btn btn-primary'> Voltar</Link>
                             </Col>
                             <Col md={8}>
@@ -58,7 +58,7 @@ const id = ({deputado, despesas, profissoes, orgaos, frentes, discursos}) => {
                                     </tbody>
                                 </Table>
                                 </div>
-                                <hr/>
+                                <hr style={{color: '#006400'}}/>
                             <h3> Orgãos </h3>    
                             <div style={{ height: '200px', overflowY: 'scroll' }}>
                             <Table striped>
@@ -81,7 +81,7 @@ const id = ({deputado, despesas, profissoes, orgaos, frentes, discursos}) => {
                                     </tbody>
                                 </Table>
                                 </div>
-                                <hr/>
+                                <hr style={{color: '#006400'}}/>
                             <h3> Frentes Parlamentares </h3>    
                             <div style={{ height: '200px', overflowY: 'scroll' }}>
                             <Table striped>
@@ -119,7 +119,7 @@ const id = ({deputado, despesas, profissoes, orgaos, frentes, discursos}) => {
                                 
                               </Dropdown.Menu>
                             </Dropdown>
-                            <hr/>
+                            <hr style={{color: '#006400'}}/>
                             <Dropdown>
                               <Dropdown.Toggle variant="success" id="dropdown-basic">
                                 Discursos

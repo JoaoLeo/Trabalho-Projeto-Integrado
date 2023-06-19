@@ -121,7 +121,7 @@ const analiseGastos = () => {
       {
         !alert &&
         <> 
-        <h1> Análise de Gastos </h1> <hr/>
+        <h1> Análise de Gastos </h1> <hr style={{color: '#006400'}}/>
         </> 
       }
     
@@ -155,7 +155,7 @@ const analiseGastos = () => {
           </Form.Select>
         </Form.Group>
         </Row>
-        <hr/>
+        <hr style={{color: '#006400'}}/>
         <Row> 
         <Form.Group as={Col} md="6" controlId="mes2">
           <Form.Label> <BsCalendarFill className='me-1'/> Mês 2</Form.Label>
@@ -177,7 +177,7 @@ const analiseGastos = () => {
           </Form.Select>
         </Form.Group>
         </Row>
-        <hr/>
+        <hr style={{color: '#006400'}}/>
         <Row> 
         <Form.Group controlId="estado">
           <Form.Label> <GiBrazil/> Estado</Form.Label>

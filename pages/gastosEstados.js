@@ -90,9 +90,9 @@ const gastosEstados = () => {
           <Row>
             <Col md='8'>
             <h5> Selecione um estado, um mês e um ano para obter o ranking dos deputados que tiveram os maiores gastos no período
-</h5> <hr/>
+</h5> <hr style={{color: '#006400'}}/>
               <MapBrazil stroke-width='3px' bg='#037624' fill='#06c83d' width={500} height={500} onChange={setEstadoSelecionado} />
-              <hr/>
+              <hr style={{color: '#006400'}}/>
               <h4> Estado Selecionado {estadoSelecionado}</h4>
             </Col>
             <Col md='4'>
