@@ -15,10 +15,12 @@ export default function Home({ deputados }) {
     <GlobalStyle/>
       <Header />
       <Container>
-        <Row md={4}> 
+      <h3> Deputados:
+</h3> <hr style={{color: '#006400'}}/>
+      <Row md={4}> 
                 {deputados.map(item => (
                   <Col>
-                    <Card className={styles.card}>
+                    <Card className={styles.card} title={`Clique para ver as informações de ${item.nome}`}>
                     <Link href={'/deputado/' + item.id}>
                       <Card.Img variant="top" src={item.urlFoto} className={styles.img}/>
                       <Card.Title className={styles.nome}>{item.nome}</Card.Title>
